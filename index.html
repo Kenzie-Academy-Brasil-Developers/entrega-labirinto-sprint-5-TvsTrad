@@ -16,14 +16,25 @@
 </head>
 <body>
     <header class = "header">
-        <div id ="music"><i class="far fa-pause-circle"></i></div>
-        <h1 class= "header__title" >DUCK ESCAPE</h1>
         
+        <h1 class= "header__title" >DUCK ESCAPE</h1>
     </header>
     <main>
+        
         <div id ="container"></div>
     </main>
-    <footer></footer>
+    <footer>
+        <div>
+            <audio id="audio" onloadeddata='lowerVolume()' controls autoplay>
+                <source src = "./music/Journey _ Separate Ways(Worlds Apart) w .mp3" type = "audio/mpeg">
+            </audio>
+
+            <button id='playPauseBTN' onclick="playPause()"><i class="fas fa-play"></i></button>
+            
+            
+        
+        </div>
+   </footer>
     <script src="index.js"></script>
 </body>
 </html>

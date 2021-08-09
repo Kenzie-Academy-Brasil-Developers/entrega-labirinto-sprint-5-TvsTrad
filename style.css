@@ -25,7 +25,7 @@ header {
     position: relative;
     top:0;
     text-align: center;
-    font-family: Tron, sans-serif;
+    font-family: 'Tron', sans-serif;
     color: var(--color-white);
     font-weight: bolder;
     
@@ -69,21 +69,47 @@ main{
                 border-color: var(--color-red);
             }
             .duck {
-                background-color: var(--color-tronBlue);
-                background-image: url(./img/DuckRight.png);
+                background-color: var(--color-black);
                 background-position: center;
                 border: 1px solid var(--color-red);
                 z-index: 1;
             }
+                .right {
+                    background-image: url(./img/DuckRight.png);
+                }
+                .left {
+                    background-image: url(./img/DuckLeft.png);
+                }
+                .down {
+                    background-image: url(./img/DuckFront.png);
+                }
+                .up{
+                    background-image: url(./img/DuckBack.png);
+                }
             .exit {
                 content: url(./img/portal-pixel-art.gif);
                 border-color: var(--color-red);
             }
-            
+button {
+    float: right;
+    padding: 10px 25px;
+    font-size: 10px;
+    line-height: 10px;
+    text-align: center;
+    cursor: pointer;
+    color: var(--color-white);
+    height: 40px;
+    background: transparent;
+    border: none;
+}
+button:hover {
+    border: 2px solid white;
+}
 footer {
     box-sizing: border-box;
-    position: relative;
+    position: absolute;
     bottom:0 ;
     width: 100%;
+    color: var(--color-white);
 }
 

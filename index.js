@@ -1,5 +1,4 @@
 let container = document.getElementById('container');
-//
 
 const map = [
     "WWWWWWWWWWWWWWWWWWWWW",
@@ -40,6 +39,7 @@ function mazeGenerator() {
             if (cell === "S") {
                 cellCont.classList.add('path')
                 cellCont.classList.add('duck')
+                cellCont.classList.add('down')
             }
             if (cell === "F") {
                 cellCont.classList.add('path')
@@ -55,67 +55,91 @@ const starterCell = document.getElementsByClassName("duck")[0]
 let currentCellId = starterCell.id;
 let currentCell = starterCell
 let moveIndex = Number(currentCellId.replace(/L/g, ''))
-let nextCell = document.getElementById(moveIndex)
-// usar o ID da currentCellId para definir o ID da nextCell .
+let nextCell = document.getElementById(`L${moveIndex}`)
+let move 
+//funcao de validacao 
 
+function validMove () {
+    let valid = nextCell.classList.contains("path")
+    if ( valid === true) { 
+        currentCell.classList.remove("duck", "right" , "left", "up", "down")
+        nextCell.classList.add("duck" , `${move}`)
+        currentCell = nextCell
+    }else {
+        moveIndex = Number(currentCellId.replace(/L/g, ''))
+        alert("QUACK!")
+        
+    }
+}
+// function victory
 
+function victory () {
+    let exitCell = document.getElementsByClassName("exit")[0]
+    if (exitCell.classList.contains("duck") === true ) {
+        return alert('victory!')
+    }
+}
 
+//funcao de movimento
 function movement(){
     document.addEventListener('keydown', (event) => {
         const keyName = event.key;
         if (keyName === "ArrowDown") {
+            move = "down"
             moveIndex += 100
-            moveIndex = `L${moveIndex}`
-            nextCell = document.getElementById(moveIndex)
-            currentCell.classList.remove("duck")
-            nextCell.classList.add("duck")
-            currentCell = nextCell
-            return currentCell            
+            nextCell = document.getElementById(`L${moveIndex}`)
+            validMove()
+            victory()
         }
         if (keyName === 'ArrowUp') {
+            move = "up"
             moveIndex -= 100
-            moveIndex = `L${moveIndex}`
-            nextCell = document.getElementById(moveIndex)
-            currentCell.classList.remove("duck")
-            nextCell.classList.add("duck")
-            currentCell = nextCell.id
-            
+            nextCell = document.getElementById(`L${moveIndex}`)
+            validMove()
+            victory()
+
         }
         if (keyName === "ArrowLeft") {
+            move = "left"
             moveIndex -= 1
-            moveIndex = `L${moveIndex}`
-            nextCell = document.getElementById(moveIndex)
-            currentCell.classList.remove("duck")
-            nextCell.classList.add("duck")
-            currentCell = nextCell.id
+            nextCell = document.getElementById(`L${moveIndex}`)
+            validMove()
+            victory()
         }
         if (keyName === "ArrowRight") {
+            move = "right"
             moveIndex += 1
-            moveIndex = `L${moveIndex}`
-            nextCell = document.getElementById(moveIndex)
-            currentCell.classList.remove("duck")
-            nextCell.classList.add("duck")
-            currentCell = nextCell.id
+            nextCell = document.getElementById(`L${moveIndex}`)
+            validMove()
+            victory()
         }
   })
 };
 
 movement()
 
-function validate() {
-    document.addEventListener('keydown', (event) => {
-        const keyName = event.key;
-        if (keyName === "ArrowDown") {
-        
-        }
-        if (keyName === 'ArrowUp') {
-        
-        }
-        if (keyName === "ArrowLeft") {
-        
-        }
-        if (keyName === "ArrowRight") {
-        
-        }
-    })
+// music
+
+let audio = document.getElementById('audio')
+let playPauseBTN = document.getElementById('playPauseBTN')
+let status = true;
+
+function lowerVolume () {
+    audio.setVolume = 0.3 ;
+}
+
+function setVolume(number) {
+    audio.volume = (number/10)
+}
+
+function playPause(){
+    if(status === false) {
+        status = true;
+        audio.play();
+        playPauseBTN.innerHtml = '<i class="fas fa-pause"></i>';
+    }else {
+        status = false;
+        audio.pause()
+        playPauseBTN.innerHTML = '<i class="fas fa-play"></i>';
+    }
 }
