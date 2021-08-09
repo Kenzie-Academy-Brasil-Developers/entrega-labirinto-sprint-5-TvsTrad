@@ -1,0 +1,115 @@
+ :root {
+    --color-red: #FE8A71;
+    --color-purple: #7c5e99;
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-black-second: #3a4042;
+    --color-black-third: #828282;
+    --color-error: #BA1F33 ;
+    --color-warning: #CEb02A ;
+    --color-sucess: #62c370;
+    --color-tronBlue: #66fbfb;
+    --color-darkerBlue: #062474;
+
+}
+
+body {
+    /* background-image: url('img/Background/Default.jpeg'); */
+    background-color: var(--color-black);
+    background-size: cover;
+    background-clip: border-box;
+    
+}   
+header {
+    box-sizing: border-box;
+    position: relative;
+    top:0;
+    text-align: center;
+    font-family: 'Tron', sans-serif;
+    color: var(--color-white);
+    font-weight: bolder;
+    
+}
+    .header__title {
+        /* text-shadow: 4px 4px 2px rgba(150, 150, 150, 1); */
+        text-shadow: 4px 4px 2px var(--color-darkerBlue);
+        font-size: 50px;
+    }
+main{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+    #music{
+        text-align: right;
+        margin: 10px 10px;
+    }
+    #container{
+        display: flex;
+        flex-direction: column;
+    }
+        .lines {
+            display: flex;
+            
+            
+        }
+            .cells {
+                display:flex;
+                height: 50px;
+                width: 50px;
+                border: 1px solid var(--color-darkerBlue);
+            }
+            .wall {
+                background-color: var(--color-darkerBlue);
+            }
+            .path {
+                background-color: var(--color-black);
+                border-color: var(--color-red);
+            }
+            .duck {
+                background-color: var(--color-black);
+                background-position: center;
+                border: 1px solid var(--color-red);
+                z-index: 1;
+            }
+                .right {
+                    background-image: url(./img/DuckRight.png);
+                }
+                .left {
+                    background-image: url(./img/DuckLeft.png);
+                }
+                .down {
+                    background-image: url(./img/DuckFront.png);
+                }
+                .up{
+                    background-image: url(./img/DuckBack.png);
+                }
+            .exit {
+                content: url(./img/portal-pixel-art.gif);
+                border-color: var(--color-red);
+            }
+button {
+    float: right;
+    padding: 10px 25px;
+    font-size: 10px;
+    line-height: 10px;
+    text-align: center;
+    cursor: pointer;
+    color: var(--color-white);
+    height: 40px;
+    background: transparent;
+    border: none;
+}
+button:hover {
+    border: 2px solid white;
+}
+footer {
+    box-sizing: border-box;
+    position: absolute;
+    bottom:0 ;
+    width: 100%;
+    color: var(--color-white);
+}
+
